@@ -12,33 +12,34 @@
                     </div>
                 </li>
                 <li class="user-pro">
-                    <a href="#" class="waves-effect"><img src="" alt="user-img"
-                                                          class="img-circle"> <span
-                        class="hide-menu"> Steve Gection<span class="fa arrow"></span></span>
+                    <a href="#" class="waves-effect"><img :src="user ? (user.avatar) : ''" alt="user-img" class="img-circle"> <span class="hide-menu"> {{ user ? `${user.f_name} ${user.l_name}` : '' }}<span class="fa arrow"></span></span>
                     </a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a class="active" href="javascript:void(0)"><i class="ti-user"></i> Trang cá nhân</a></li>
+                        <li><a href="" @click="logout"><i class="fa fa-power-off"></i> Đăng xuất</a></li>
                     </ul>
                 </li>
                 <li class="nav-small-cap m-t-10">--- Main Menu</li>
                 <li>
-                    <router-link class="waves-effect" to="/mangas" exact>
+                    <router-link class="waves-effect" to="/" exact>
+                        <i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
+                        <span class="hide-menu">Dashboard</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link class="waves-effect" to="/mangas">
                         <i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
                         <span class="hide-menu">Mangas</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link class="waves-effect" to="/genres" exact>
+                    <router-link class="waves-effect" to="/genres">
                         <i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
                         <span class="hide-menu">Genres</span>
                     </router-link>
                 </li>
                 <li>
-                    <router-link class="waves-effect" to="/authors" exact>
+                    <router-link class="waves-effect" to="/authors">
                         <i data-icon="P" class="linea-icon linea-basic fa-fw"></i>
                         <span class="hide-menu">Authors</span>
                     </router-link>
@@ -48,7 +49,33 @@
     </div>
 </template>
 <script>
+    import { mapGetters } from 'vuex';
+    import { mapActions } from 'vuex';
     export default {
-
+        methods:{
+            logout:function (event) {
+                event.preventDefault();
+                this.$store.dispatch('logoutProcess').then(response =>{
+                    this.$router.push('/login');
+                });
+            }
+        },
+        mounted(){
+            if(!this.$store.getters.token){
+                this.$router.push('/login');
+            }
+            this.$store.dispatch('getUserInfor');
+        },
+        computed:{
+            ...mapGetters([
+                'user'
+            ])
+        }
     }
 </script>
+<style scoped>
+    .router-link-active{
+        color: #2b2b2b;
+        font-weight: 500;
+    }
+</style>

@@ -1,11 +1,11 @@
 <template>
     <div id="wrapper" :class="this.$route.path == '/login' ? 'login-register' : ''">
-        <top-nav v-if="this.$route.path != '/login'"></top-nav>
-        <sidebar v-if="this.$route.path != '/login'"></sidebar>
+        <top-nav v-show="this.$route.path != '/login'"></top-nav>
+        <sidebar v-show="this.$route.path != '/login'"></sidebar>
         <div :id="this.$route.path != '/login' ? 'page-wrapper' : ''">
             <router-view></router-view>
         </div>
-        <theme-setting v-if="this.$route.path != '/login'"></theme-setting>
+        <theme-setting v-show="this.$route.path != '/login'"></theme-setting>
     </div>
 </template>
 <script>

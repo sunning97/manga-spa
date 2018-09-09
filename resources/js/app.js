@@ -18,8 +18,10 @@ window.Vue = require('vue');
 Vue.component('master', require('./components/Master.vue'));
 
 import route from './route/index';
+import { store } from './store/store';
 
 const app = new Vue({
     el: '#app',
     router:route,
+    store:store
 });

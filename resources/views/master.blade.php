@@ -18,6 +18,8 @@
     <link href="{{ asset('admin/plugins/bootstrap-extension/css/bootstrap-extension.css') }}" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="{{ asset('admin/plugins/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="{{ asset('admin/plugins/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <!-- Animation CSS -->
     <link href="{{ asset('admin/css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -54,6 +56,8 @@
 <script src="{{ asset('admin/plugins/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
 <!--slimscroll JavaScript -->
 <script src="{{ asset('admin/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('admin/plugins/toast-master/js/jquery.toast.js') }}"></script>
+
 <!--Wave Effects -->
 <script src="{{ asset('admin/js/waves.js') }}"></script>
 <!-- Custom Theme JavaScript -->
