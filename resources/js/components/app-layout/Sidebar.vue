@@ -51,13 +51,32 @@
 <script>
     import { mapGetters } from 'vuex';
     import { mapActions } from 'vuex';
+
+
     export default {
         methods:{
             logout:function (event) {
                 event.preventDefault();
-                this.$store.dispatch('logoutProcess').then(response =>{
-                    this.$router.push('/login');
-                });
+                let timerInterval;
+                Vue.swal({
+                    title: 'Đang đăng xuất...',
+                    timer: 1000,
+                    onOpen: () => {
+                        Vue.swal.showLoading();
+                        timerInterval = setInterval(() => {
+                            swal.getContent().querySelector('strong')
+                                .textContent = swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    this.$store.dispatch('logoutProcess').then(response =>{
+                        this.$router.push('/login');
+                    })
+                })
+
             }
         },
         mounted(){

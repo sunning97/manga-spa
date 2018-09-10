@@ -19,6 +19,9 @@ Vue.component('master', require('./components/Master.vue'));
 
 import route from './route/index';
 import { store } from './store/store';
+import VueSweetalert2 from 'vue-sweetalert2';
+
+Vue.use(VueSweetalert2);
 
 const app = new Vue({
     el: '#app',

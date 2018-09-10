@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
-                    <h3 class="box-title">Dashboard</h3></div>
+                    <h3 class="box-title" @click="aaa">Dashboard</h3></div>
             </div>
         </div>
     </div>
@@ -22,6 +22,31 @@
     export default {
         mounted(){
 
+        },
+        methods:{
+            aaa:function () {
+                let timerInterval;
+                Vue.swal({
+                    title: 'Đang đăng xuất...',
+                    timer: 2000,
+                    onOpen: () => {
+                        Vue.swal.showLoading();
+                        timerInterval = setInterval(() => {
+                            swal.getContent().querySelector('strong')
+                                .textContent = swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    if (
+                        result.dismiss === swal.DismissReason.timer
+                    ) {
+                        console.log('I was closed by the timer')
+                    }
+                })
+            }
         }
     }
 </script>

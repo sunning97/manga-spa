@@ -105,6 +105,17 @@
                     password: this.password
                 }).then(response=>{
                     this.$router.push('/');
+                    const toast = Vue.swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+
+                    toast({
+                        type: 'success',
+                        title: 'Đăng nhập thành công!'
+                    })
                 });
             }
         },
