@@ -39,7 +39,6 @@ export const store = new Vuex.Store({
         exceptUser: state => {
             state.user = {}
         }
-
     },
     actions:{
         loginProcess: (context,credential) => {

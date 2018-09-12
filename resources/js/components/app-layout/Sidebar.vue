@@ -50,9 +50,6 @@
 </template>
 <script>
     import { mapGetters } from 'vuex';
-    import { mapActions } from 'vuex';
-
-
     export default {
         methods:{
             logout:function (event) {
@@ -76,7 +73,6 @@
                         this.$router.push('/login');
                     })
                 })
-
             }
         },
         mounted(){
