@@ -76,14 +76,15 @@
             }
         },
         mounted(){
-            if(!this.$store.getters.token){
+            if(!this.token){
                 this.$router.push('/login');
             }
             this.$store.dispatch('getUserInfor');
         },
         computed:{
             ...mapGetters([
-                'user'
+                'user',
+                'token'
             ])
         }
     }

@@ -13,12 +13,17 @@ export const store = new Vuex.Store({
                 password:null
             },
             unauthorized:''
+        },
+        genres:{
+            genres:{},
+            pagination:{}
         }
     },
     getters: {
         token: state => state.token,
         errorLogin: state => state.errorLogin,
         user: state => state.user,
+        genres: state => state.genres.genres,
     },
     mutations:{
         setErrorLogin: (state,errors) => {

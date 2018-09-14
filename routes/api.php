@@ -18,4 +18,5 @@ Route::middleware('jwt')->group(function (){
     Route::post('logout', 'Api\AuthController@logout');
     Route::post('refresh', 'Api\AuthController@refresh');
     Route::post('me', 'Api\AuthController@me');
+    Route::resource('genres','Api\GenreController');
 });

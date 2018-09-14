@@ -48,6 +48,7 @@
 <!-- /#wrapper -->
 <!-- jQuery -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('admin/js/another.js') }}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('admin/bootstrap/dist/js/tether.min.js') }}"></script>
 <script src="{{ asset('admin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
